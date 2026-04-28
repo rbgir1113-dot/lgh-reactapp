@@ -17,19 +17,16 @@ import {
   h11Regular,
   h9Bold,
 } from "../../../../../styles/common";
-import { flexBetweenTopRow, flexStartColumn } from "../../communityStyle";
+import {
+  flexBetweenTopRow,
+  flexStartColumn,
+  textFieldStyle,
+} from "../../communityStyle";
 import ToolBar from "./postWriteComponent/ToolBar";
 import CommunityRule from "./postWriteComponent/CommunityRule";
 import PostingGuide from "./postWriteComponent/PostingGuide";
 
 /* ── 에셋 URL ── */
-const youtubeLogoImg =
-  "https://www.figma.com/api/mcp/asset/4a0a2f06-4130-4d40-ac3f-9daee51ce634";
-const naverLogoImg =
-  "https://www.figma.com/api/mcp/asset/81257a45-6f8a-40e5-83ed-2f65444f1c4c";
-const instagramLogoImg =
-  "https://www.figma.com/api/mcp/asset/a2762428-0e3e-447d-a6e7-6afa60cf4e22";
-
 const iconUpload =
   "https://www.figma.com/api/mcp/asset/66deb0b8-9f0e-48ef-945b-0aec781f7f86";
 const iconSaveNotice =
@@ -168,29 +165,13 @@ const leftAreaWidth = css`
 
 /* ── 텍스트 입력 필드 ── */
 const InputField = styled.input`
-  /* flex: 1; */
   min-width: 0;
   height: 49px;
-  ${leftAreaWidth}
   padding: 0 24px;
-  background: ${theme.PALETTE.white};
-  border: 1px solid ${theme.GRAYSCALE[8]};
-  border-radius: 8px;
-  font-weight: ${theme.FONT_WEIGHT.regular};
-  font-size: ${theme.FONT_SIZE.h10};
-  line-height: 22px;
-  letter-spacing: -0.28px;
-  color: ${theme.TEXT_COLOR.basic};
-  box-sizing: border-box;
-  outline: none;
+  ${h10Regular}
 
-  &::placeholder {
-    color: ${theme.GRAYSCALE[9]};
-  }
-
-  &:focus {
-    border-color: ${theme.PALETTE.primary.main};
-  }
+  ${textFieldStyle}
+  ${leftAreaWidth}
 `;
 
 /* ── 카테고리 ── */
@@ -212,6 +193,7 @@ const CategoryPills = styled.div`
   flex-wrap: wrap;
 `;
 
+// 카테고리 선택 버튼 조정
 const CategoryPill = styled.button`
   height: 36px;
   padding: 0 24px;
@@ -249,26 +231,10 @@ const BodyCol = styled.div`
 `;
 
 const TextArea = styled.textarea`
-  width: 100%;
   height: 360px;
-  padding: 16px 24px;
-  background: ${theme.PALETTE.white};
-  border: 1px solid ${theme.GRAYSCALE[8]};
-  border-radius: 8px;
-  ${h10Regular}
-  color: ${theme.TEXT_COLOR.basic};
   resize: vertical;
-  box-sizing: border-box;
-  outline: none;
-
-  &::placeholder {
-    color: ${theme.GRAYSCALE[9]};
-    white-space: nowrap;
-  }
-
-  &:focus {
-    border-color: ${theme.PALETTE.primary.main};
-  }
+  ${h10Regular}
+  ${textFieldStyle}
 `;
 
 /* ── 첨부파일 ── */
@@ -302,19 +268,14 @@ const UploadIcon = styled.img`
 
 const FileDropTitle = styled.p`
   margin: 0;
-  font-weight: ${theme.FONT_WEIGHT.bold};
-  font-size: ${theme.FONT_SIZE.h10};
-  letter-spacing: -0.28px;
+  ${h10Bold}
   color: ${theme.GRAYSCALE[9]};
   text-align: center;
 `;
 
 const FileDropSub = styled.p`
   margin: 0;
-  font-weight: ${theme.FONT_WEIGHT.regular};
-  font-size: ${theme.FONT_SIZE.h11};
-  line-height: 20px;
-  letter-spacing: -0.24px;
+  ${h11Regular}
   color: ${theme.GRAYSCALE[9]};
   text-align: center;
 `;
@@ -358,10 +319,7 @@ const TagCol = styled.div`
 
 const TagHint = styled.p`
   margin: 0;
-  font-weight: ${theme.FONT_WEIGHT.regular};
-  font-size: ${theme.FONT_SIZE.h11};
-  line-height: 20px;
-  letter-spacing: -0.24px;
+  ${h11Regular}
   color: ${theme.GRAYSCALE[9]};
 `;
 
@@ -417,10 +375,7 @@ const SaveIcon = styled.img`
 
 const SaveText = styled.p`
   margin: 0;
-  font-weight: ${theme.FONT_WEIGHT.regular};
-  font-size: ${theme.FONT_SIZE.h11};
-  line-height: 20px;
-  letter-spacing: -0.24px;
+  ${h11Regular}
   color: ${theme.PALETTE.primary.main};
   white-space: pre-line;
 `;
@@ -545,6 +500,8 @@ const PostWrite = () => {
         <RightBlock>
           {/* 작성 가이드 */}
           <PostingGuide />
+          {/* 커뮤니티 규칙 */}
+          <CommunityRule />
 
           {/* 자동 임시저장 알림 */}
           <SaveNotice>
@@ -555,9 +512,6 @@ const PostWrite = () => {
               }
             </SaveText>
           </SaveNotice>
-
-          {/* 커뮤니티 규칙 */}
-          <CommunityRule />
         </RightBlock>
       </ContentArea>
     </Page>

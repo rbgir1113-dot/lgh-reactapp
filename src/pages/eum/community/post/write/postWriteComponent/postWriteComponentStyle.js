@@ -9,7 +9,7 @@ export const SideCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 8px 24px rgba(67, 89, 252, 0.12);
+  /* box-shadow: 0 8px 24px rgba(67, 89, 252, 0.12); */
 `;
 
 export const SideCardTitle = styled.p`
