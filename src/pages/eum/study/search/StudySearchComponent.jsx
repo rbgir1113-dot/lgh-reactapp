@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// 검색페이지
 const StudySearchComponent = () => {
     return (
         <div>

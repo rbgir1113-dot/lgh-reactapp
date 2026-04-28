@@ -1,23 +1,62 @@
 import styled from "styled-components";
+import theme from "../../../styles/theme";
 import { Link } from "react-router-dom";
 
 
-export const HeroBox = styled.section`
-  /* background: #ff7a00;
-  color: white; */
-  border-radius: 16px;
-  padding: 28px 22px;
-  margin-bottom: 18px;
+// 전체
+export const StudyWrap = styled.section`
+ padding: 28px 22px;
+`;
 
-  .banner {
-    font-size: 24px;
-    font-weight: 800;
-    margin: 0 0 8px;
+// 배너
+export const Banner = styled.section`
+  .title{
+
+
   }
+  
+  .desc{
 
-  .category {
-    font-size: 15px;
-    line-height: 1.5;
-    margin: 5 0 18px;
+
   }
 `;
+
+// 카테고리
+export const Category = styled.section`
+  .onest{
+
+    .attendCheck{
+
+
+    }
+
+    .ohQuiz {
+
+
+    } 
+  }
+
+  .twoed{
+    .signLearn{
+
+    }
+    .emergency{
+
+
+    }
+    .mors{
+
+    }
+  }
+`;
+
+// 검색
+export const Search = styled.section`
+
+`;
+
+// 영상
+export const Video = styled.section`
+
+`;
+
