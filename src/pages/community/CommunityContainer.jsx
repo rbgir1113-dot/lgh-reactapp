@@ -11,7 +11,6 @@ const CommunityContainer = () => {
   return (
     <>
       <div>
-        커뮤니티페이지
         <CommunityComponent />
         <Outlet />
       </div>

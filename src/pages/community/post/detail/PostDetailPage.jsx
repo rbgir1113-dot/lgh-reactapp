@@ -78,7 +78,7 @@ const CrumbSep = styled.span`
 /* ══ Main Content ══ */
 const ContentArea = styled.main`
   flex: 1;
-  /* padding: 20px 300px 60px; */
+  padding: 20px 300px 60px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -205,7 +205,7 @@ const PostDetailPage = () => {
       <ContentArea>
         <MainSection>
           <PostContent />
-          <CommentSection />
+          {/* <CommentSection /> */}
         </MainSection>
 
         <PostSidebar />

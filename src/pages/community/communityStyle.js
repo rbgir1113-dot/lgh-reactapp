@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
 // 커뮤니티 좌측 (9개 그리드) 영역 너비
@@ -13,6 +13,44 @@ export const communitySideWidth = css`
 
 export const communityBorderRadius = css`
   border-radius: 20px;
+`;
+
+// 커뮤니티 에서 좌측 9개, 우측 3 개로 나누는 과정을 위한 Page
+/* ══ Page ══ */
+export const Page = styled.div`
+  background: ${theme.GRAYSCALE[10]};
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+/* ══ Content Area ══ */
+// 해당 영역은 좌측에는 메인, 우측에는 사이드 레이아웃이 있는 구조
+export const ContentArea = styled.main`
+  flex: 1;
+  padding: 24px 300px 60px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  box-sizing: border-box;
+`;
+
+/* ══ Left Block ══ */
+export const LeftBlock = styled.div`
+  width: 984px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+`;
+
+// column 으로 24px 간격 으로 리스트 하는 개념
+export const CardList = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
 `;
 
 // 마우스를 카드 에 올렸을 때 상호작용 할 요소

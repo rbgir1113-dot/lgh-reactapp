@@ -23,6 +23,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { h11Bold, h11Regular } from "../../../../../styles/common";
+import CommentSection from "./CommentSection";
 
 const { PALETTE, GRAYSCALE, TEXT_COLOR, FONT_SIZE, FONT_WEIGHT } = theme;
 
@@ -496,6 +497,8 @@ const PostContent = ({
             </IconButton>
           </ActionButtons>
         </ActionRow>
+
+        <CommentSection />
       </BodyWrapper>
     </div>
   );
