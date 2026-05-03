@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { ContentArea, Page } from "./communityStyle";
 import MainRightSide from "./common/MainRightSide";
-import SideChatSample from "./chat/SideChatSample";
 
 const users = [
   { userId: 1, userName: "홍길동" },
@@ -25,8 +24,6 @@ const CommunityContainer = () => {
             <MainRightSide />
           </ContentArea>
 
-          {/* 채팅 테스트 용 페이지 (라우터 건드리지 않기 위한 목적) */}
-          <SideChatSample />
         </Page>
       </div>
       <div>

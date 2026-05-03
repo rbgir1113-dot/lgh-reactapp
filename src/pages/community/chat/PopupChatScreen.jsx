@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { colors, fonts, radius } from "../styles/themeOriginal";
-import OutlineButton from "./common/OutlineButton";
-import ToggleSwitch from "./common/ToggleSwitch";
+import { colors, fonts, radius } from "./themeOriginal";
+import OutlineButton from "../common/OutlineButton";
+import ToggleSwitch from "../common/ToggleSwitch";
 
 // Figma asset URLs (expires in 7 days)
 const assets = {
@@ -950,7 +950,7 @@ const ReportCardDesc = styled.p`
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 
-const PopupChatScreen = () => {
+const PopupChatScreen = ({ onMinimize, onClose, onLeave }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [signToggle, setSignToggle] = useState(false);
   const [readToggle, setReadToggle] = useState(false);
@@ -986,11 +986,11 @@ const PopupChatScreen = () => {
             </MessageStatus>
           </HeaderLeft>
           <HeaderRight>
-            <LeaveBtn>채팅방 나가기</LeaveBtn>
-            <MinimizeBtn>
+            <LeaveBtn onClick={onLeave}>채팅방 나가기</LeaveBtn>
+            <MinimizeBtn onClick={onMinimize}>
               <img src={assets.minimizeV} alt="최소화" />
             </MinimizeBtn>
-            <CloseBtn>
+            <CloseBtn onClick={onClose}>
               <img src={assets.closeV} alt="닫기" />
             </CloseBtn>
           </HeaderRight>
