@@ -63,6 +63,7 @@ export const PALETTE_EXT = {
 export const RADIUS = {
   pill: "100px",
   card: "20px",
+  section: "16px",  // 섹션 컨테이너 (AccessibilityBox, ImageBox 등)
   button: "12px",
   input: "8px",
   smallCard: "8px",
@@ -90,6 +91,19 @@ export const LAYOUT = {
   cardMaxWidth: "984px",
   contentWidth: "1320px",
   gridGap: "24px",
+};
+
+// 게시글 상세 UI 전용 토큰
+export const POST = {
+  horizontalPadding: "52px",  // PostHeader, PostBodyWrapper 수평 패딩
+};
+
+// 댓글 UI 전용 크기 토큰
+export const COMMENT = {
+  avatarSize: "40px",      // Avatar, DefaultAvatar, ReportButton 공통 크기
+  replyIndent: "56px",     // 답글 들여쓰기 (CommentItemWrapper padding-left)
+  rightAreaWidth: "74px",  // 시간+신고버튼 영역 고정 너비
+  itemGap: "12px",         // 댓글 내 요소 간 기본 간격 (Body, ReactionsRow)
 };
 
 // ─── 채팅 패널 디자인 토큰 (chat/themeOriginal.js에서 이전) ──────────────────

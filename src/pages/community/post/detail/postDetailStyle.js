@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   LAYOUT,
+  POST,
   RADIUS,
   SURFACE,
   TAG_ON_PRIMARY,
@@ -26,6 +27,14 @@ import { flexStartColumn } from "../../communityStyle";
 import theme from "../../../../styles/theme";
 
 const { PALETTE, GRAYSCALE, TEXT_COLOR, FONT_SIZE } = theme;
+
+// ── 공통 CSS 믹스인 ──
+
+const flexColumn12 = css`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
 
 export const BreadcrumbBar = styled.div`
   width: 1320px;
@@ -55,7 +64,7 @@ export const PostHeader = styled.div`
   align-items: center;
   gap: 20px;
   background: ${PALETTE.primary.main};
-  padding: 15px 52px;
+  padding: 15px ${POST.horizontalPadding};
   border-radius: ${RADIUS.card} ${RADIUS.card} 0 0;
 `;
 
@@ -78,20 +87,16 @@ export const BreadcrumbPath = styled(H11Regular)`
 /* ── Body wrapper ── */
 // 전체 하얀 카드 형태로 감싸는 개념
 export const PostBodyWrapper = styled.div`
+  ${flexColumn12}
   background: ${SURFACE.card};
   border-radius: 0 0 ${RADIUS.card} ${RADIUS.card};
-  padding: 44px 52px;
+  padding: 44px ${POST.horizontalPadding};
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 `;
 
 // 간격 하는 개념
 export const PostContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  ${flexColumn12}
 `;
 
 /* ── Title ── */
@@ -203,7 +208,7 @@ export const ImageBox = styled.div`
   max-width: 547px;
   background: ${PALETTE.primary.extraLight};
   border: 2px dashed ${PALETTE_EXT.primaryMid};
-  border-radius: 16px;
+  border-radius: ${RADIUS.section};
   padding: 36px;
   display: flex;
   align-items: center;
@@ -249,7 +254,7 @@ export const Tag = styled.span`
 export const AccessibilityBox = styled.div`
   width: 100%;
   border: 1px solid ${PALETTE.secondary.main};
-  border-radius: 16px;
+  border-radius: ${RADIUS.section};
   background: ${ACCESSIBILITY.gradient};
   height: 120px;
   position: relative;

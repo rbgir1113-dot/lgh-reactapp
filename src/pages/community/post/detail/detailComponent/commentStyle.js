@@ -1,14 +1,47 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../../../../styles/theme";
 import {
   ACCESSIBILITY,
+  COMMENT,
   FONT_FAMILY,
   FONT_SIZE_EXT,
   RADIUS,
   SURFACE,
 } from "../../../constants";
+import { h11Regular, h12Bold, h5Bold } from "../../../../../styles/common";
 
 const { PALETTE, GRAYSCALE, TEXT_COLOR, FONT_SIZE, FONT_WEIGHT } = theme;
+
+// ── 공통 CSS 믹스인 ──
+
+const avatarBase = css`
+  width: ${COMMENT.avatarSize};
+  height: ${COMMENT.avatarSize};
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const bodyTextBase = css`
+  font-family: ${FONT_FAMILY};
+  font-weight: ${FONT_WEIGHT.regular};
+  font-size: ${FONT_SIZE.h10};
+  color: ${TEXT_COLOR.basic};
+  letter-spacing: -0.28px;
+  line-height: 22px;
+`;
+
+const commentBtnBase = css`
+  font-family: ${FONT_FAMILY};
+  font-weight: ${FONT_WEIGHT.bold};
+  font-size: ${FONT_SIZE.h11};
+  letter-spacing: -0.24px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: ${RADIUS.sm};
+`;
 
 // ── CommentItem ──
 
@@ -18,7 +51,7 @@ export const CommentItemWrapper = styled.div`
   justify-content: space-between;
   padding: 16px 0;
   background: ${SURFACE.card};
-  padding-left: ${({ isReply }) => (isReply ? "56px" : "0")};
+  padding-left: ${({ isReply }) => (isReply ? COMMENT.replyIndent : "0")};
 `;
 
 export const LeftArea = styled.div`
@@ -30,15 +63,9 @@ export const LeftArea = styled.div`
 `;
 
 export const Avatar = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  ${avatarBase}
   background: ${SURFACE.section};
-  flex-shrink: 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   img {
     width: 100%;
@@ -48,21 +75,15 @@ export const Avatar = styled.div`
 `;
 
 export const DefaultAvatar = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  ${avatarBase}
   background: ${PALETTE.primary.extraLight};
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: ${FONT_SIZE_EXT.h8_5};
 `;
 
 export const Body = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: ${COMMENT.itemGap};
   flex: 1;
   min-width: 0;
 `;
@@ -77,12 +98,7 @@ export const AuthorName = styled.p`
 `;
 
 export const CommentText = styled.div`
-  font-family: ${FONT_FAMILY};
-  font-weight: ${FONT_WEIGHT.regular};
-  font-size: ${FONT_SIZE.h10};
-  color: ${TEXT_COLOR.basic};
-  letter-spacing: -0.28px;
-  line-height: 22px;
+  ${bodyTextBase}
 
   p {
     margin: 0;
@@ -92,7 +108,7 @@ export const CommentText = styled.div`
 export const ReactionsRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: ${COMMENT.itemGap};
 `;
 
 export const ReactionItem = styled.div`
@@ -123,14 +139,8 @@ export const AccessibilityRow = styled.div`
 `;
 
 export const AccessBtn = styled.button`
+  ${commentBtnBase}
   padding: 6px 16px;
-  border-radius: ${RADIUS.sm};
-  font-family: ${FONT_FAMILY};
-  font-weight: ${FONT_WEIGHT.bold};
-  font-size: ${FONT_SIZE.h11};
-  letter-spacing: -0.24px;
-  cursor: pointer;
-  white-space: nowrap;
   background: ${({ variant }) =>
     variant === "blue" ? PALETTE.primary.extraLight : ACCESSIBILITY.readBg};
   color: ${({ variant }) =>
@@ -147,22 +157,19 @@ export const RightArea = styled.div`
   justify-content: space-between;
   align-self: stretch;
   flex-shrink: 0;
-  width: 74px;
+  width: ${COMMENT.rightAreaWidth};
 `;
 
 export const TimeText = styled.p`
-  font-family: ${FONT_FAMILY};
-  font-weight: ${FONT_WEIGHT.regular};
-  font-size: ${FONT_SIZE.h11};
   color: ${GRAYSCALE[9]};
-  letter-spacing: -0.24px;
+  ${h11Regular}
   margin: 0;
   text-align: right;
 `;
 
 export const ReportButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: ${COMMENT.avatarSize};
+  height: ${COMMENT.avatarSize};
   border-radius: ${RADIUS.button};
   background: ${SURFACE.card};
   border: 2px solid ${PALETTE.red};
@@ -196,38 +203,27 @@ export const HeaderRow = styled.div`
 `;
 
 export const CommentTitle = styled.h2`
-  font-family: ${FONT_FAMILY};
-  font-weight: ${FONT_WEIGHT.bold};
-  font-size: ${FONT_SIZE.h5};
+  ${h5Bold}
   color: ${TEXT_COLOR.basic};
-  letter-spacing: -0.56px;
   margin: 0;
 `;
 
 export const CountBadge = styled.span`
   background: ${PALETTE.primary.main};
   color: ${PALETTE.white};
-  font-family: ${FONT_FAMILY};
-  font-weight: ${FONT_WEIGHT.bold};
-  font-size: ${FONT_SIZE.h12};
-  letter-spacing: -0.2px;
+  ${h12Bold}
   border-radius: ${RADIUS.pill};
   padding: 4px 8px;
   white-space: nowrap;
 `;
 
 export const TextArea = styled.textarea`
+  ${bodyTextBase}
   width: 100%;
   height: 97px;
   border: 1px solid ${PALETTE.primary.main};
   border-radius: ${RADIUS.input};
   padding: 16px 24px;
-  font-family: ${FONT_FAMILY};
-  font-weight: ${FONT_WEIGHT.regular};
-  font-size: ${FONT_SIZE.h10};
-  color: ${TEXT_COLOR.basic};
-  letter-spacing: -0.28px;
-  line-height: 22px;
   resize: none;
   outline: none;
   box-sizing: border-box;
@@ -248,17 +244,11 @@ export const SubmitRow = styled.div`
 `;
 
 export const SubmitButton = styled.button`
+  ${commentBtnBase}
   background: ${PALETTE.primary.main};
   color: ${PALETTE.white};
-  font-family: ${FONT_FAMILY};
-  font-weight: ${FONT_WEIGHT.bold};
-  font-size: ${FONT_SIZE.h11};
-  letter-spacing: -0.24px;
   padding: 8px 30px;
-  border-radius: ${RADIUS.sm};
   border: none;
-  cursor: pointer;
-  white-space: nowrap;
   transition: background 0.2s ease;
 
   &:hover {
